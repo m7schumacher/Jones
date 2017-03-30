@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Kernel
+namespace Jones.Nucleus
 {
     public class Kernel
     {
@@ -15,6 +15,17 @@ namespace Jones.Kernel
         public void Initialize(bool dreaming = false)
         {
             Configuration = new Configuration(dreaming);
+
+
+        }
+
+        public string Process(string input)
+        {
+            string output = string.Empty;
+
+
+
+            return output;
         }
     }
 }

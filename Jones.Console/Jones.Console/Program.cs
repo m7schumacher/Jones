@@ -12,7 +12,7 @@ namespace Jones.Console
         {
             bool isDreaming = false;
 
-            //Console.Write("Initializing Nucleus...  ");
+            Console.Write("Initializing Nucleus...  ");
 
             //Nucleus.Initialize(true, isDreaming);
 
