@@ -29,13 +29,20 @@ namespace Jones.Core
 
         protected override void GenerateReflexes()
         {
-            Reflexes = new List<Reflex>();
+            Reflexes = new List<Reflex>()
+            {
+                new Reflex(() => GiveCurrentSummary(), "weather")
+            };
 
-            //Reflex basicWeather = new Reflex(() => GiveCurrentSummary(), "weather");
             //Reflex outlook = new Reflex(() => GiveForecast(), "weather outlook", "how's the forecast look");
             //Reflex weekOutlook = new Reflex(() => GiveWeekSummary(), "how does the weather look this week", "weather for the week");
 
             //Reflexes = new List<Reflex>() { basicWeather, outlook, weekOutlook };
+        }
+
+        protected override void PopulateValues()
+        {
+            
         }
 
         #endregion
@@ -53,11 +60,13 @@ namespace Jones.Core
         //    return Nucleus.Weather.CurrentConditions.WeekSummary;
         //}
 
-        //public string GiveCurrentSummary()
-        //{
-        //    Dictionary<string, object> values = GatherValues();
-        //    return GenerateOutput(Name, "overview", values);
-        //}
+        public string GiveCurrentSummary()
+        {
+            return "Test summary";
+
+            //Dictionary<string, object> values = GatherValues();
+            //return GenerateOutput(Name, "overview", values);
+        }
 
         #endregion
 

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fare, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fare.1.0.3\lib\net35\Fare.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SwissX">
       <HintPath>..\DLLs\SwissX.dll</HintPath>
     </Reference>
@@ -45,11 +49,19 @@
   <ItemGroup>
     <Compile Include="Commands\BasicCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Generators\BaseCommands.cs" />
+    <Compile Include="Commands\Generators\CommandGenerator.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Triggers\Instinct.cs" />
     <Compile Include="Triggers\Reflex.cs" />
     <Compile Include="Triggers\Response.cs" />
     <Compile Include="Triggers\Trigger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

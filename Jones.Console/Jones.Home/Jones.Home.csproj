@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jones.Kernel\Jones.Nucleus.csproj">
+    <ProjectReference Include="..\Jones.Kernel\Jones.Base.csproj">
       <Project>{2960bb72-de14-4bca-8b87-7a6a65db68d7}</Project>
-      <Name>Jones.Nucleus</Name>
+      <Name>Jones.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\Jones.Utility\Jones.Utility.csproj">
       <Project>{69c321a8-a82b-425e-a9c0-5c2f37a041b0}</Project>

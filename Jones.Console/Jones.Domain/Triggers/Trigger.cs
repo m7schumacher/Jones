@@ -11,6 +11,8 @@ namespace Jones.Domain.Triggers
     {
         public List<string> Phrases { get; set; }
 
+        #region Constructors
+
         public Trigger()
         {
             Phrases = new List<string>();
@@ -25,6 +27,16 @@ namespace Jones.Domain.Triggers
         {
             Phrases = command.GetCommands();
         }
+
+        public Trigger(List<BasicCommand> commands) : this()
+        {
+            foreach(BasicCommand command in commands)
+            {
+                Phrases.AddRange(command.GetCommands());
+            }
+        }
+
+        #endregion
 
         public void AddTriggers(params string[] triggers)
         {

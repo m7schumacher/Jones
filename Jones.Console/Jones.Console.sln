@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Nucleus", "Jones.Kernel\Jones.Nucleus.csproj", "{2960BB72-DE14-4BCA-8B87-7A6A65DB68D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Base", "Jones.Kernel\Jones.Base.csproj", "{2960BB72-DE14-4BCA-8B87-7A6A65DB68D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Core", "Jones.Core\Jones.Core.csproj", "{56D24580-E6DA-4A08-9863-B8EC0D873059}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Cores", "Jones.Core\Jones.Cores.csproj", "{56D24580-E6DA-4A08-9863-B8EC0D873059}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Test", "Jones.Test\Jones.Test.csproj", "{71898CBC-4E23-436D-BCC4-8F6A52CFCE6F}"
 EndProject

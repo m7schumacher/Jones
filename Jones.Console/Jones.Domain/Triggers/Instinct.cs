@@ -22,7 +22,7 @@ namespace Jones.Domain.Triggers
             Result = result;
         }
 
-        public Instinct(string result, params string[] bits) : base(bits)
+        public Instinct(string result, params string[] phrases) : base(phrases)
         {
             Result = result;
         }

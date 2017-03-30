@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Nucleus
+namespace Jones.Core
 {
     public class Kernel
     {
@@ -15,15 +15,23 @@ namespace Jones.Nucleus
         public void Initialize(bool dreaming = false)
         {
             Configuration = new Configuration(dreaming);
+            List<Core> blocks = InitializeCores();
+        }
 
-
+        private List<Core> InitializeCores()
+        {
+            return this.GetType()
+                       .GetProperties()
+                       .Where(prop => prop.PropertyType.BaseType == typeof(Core))
+                       .Select(prop => (Core)Activator.CreateInstance(prop.PropertyType))
+                       .ToList();
         }
 
         public string Process(string input)
         {
             string output = string.Empty;
 
-
+            //Logic
 
             return output;
         }

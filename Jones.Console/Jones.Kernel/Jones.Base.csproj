@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jones.Core\Jones.Core.csproj">
+    <ProjectReference Include="..\Jones.Core\Jones.Cores.csproj">
       <Project>{56d24580-e6da-4a08-9863-b8ec0d873059}</Project>
-      <Name>Jones.Core</Name>
+      <Name>Jones.Cores</Name>
     </ProjectReference>
     <ProjectReference Include="..\Jones.Domain\Jones.Domain.csproj">
       <Project>{27537830-2f4b-4139-9933-db351fbe9754}</Project>

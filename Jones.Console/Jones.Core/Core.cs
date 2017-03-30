@@ -19,16 +19,22 @@ namespace Jones.Core
         public List<Reflex> Reflexes { get; set; }
         public List<Response> Responses { get; set; }
 
+        protected Dictionary<string, string> Values { get; set; }
+
         public Core()
         {
             GenerateInstincts();
             GenerateReflexes();
             GenerateResponses();
+
+            PopulateValues();
         }
 
         protected virtual void GenerateInstincts() { Instincts = new List<Instinct>(); }
         protected virtual void GenerateReflexes() { Reflexes = new List<Reflex>(); }
         protected virtual void GenerateResponses() { Responses = new List<Response>(); }
+
+        protected virtual void PopulateValues() { Values = new Dictionary<string, string>(); }
 
         protected virtual void InitializeValues() { }
         protected virtual void Refresh() { }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Jones.Nucleus
+namespace Jones.Core
 {
     public class Configuration
     {
