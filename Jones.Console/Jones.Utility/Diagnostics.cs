@@ -13,7 +13,7 @@ namespace Jones.Utility
             action.Invoke();
             watch.Stop();
 
-            return watch.Elapsed.Seconds;
+            return watch.Elapsed.Milliseconds;
         }
     }
 }

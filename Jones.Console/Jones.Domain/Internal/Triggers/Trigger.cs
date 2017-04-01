@@ -1,9 +1,10 @@
-﻿using Jones.Domain.Commands;
+﻿using Jones.Domain.Phrases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swiss;
 
 namespace Jones.Domain.Triggers
 {
@@ -20,19 +21,19 @@ namespace Jones.Domain.Triggers
 
         public Trigger(params string[] phrases) : this()
         {
-            Phrases = phrases.ToList();
+            AddTriggers(phrases);
         }
 
-        public Trigger(BasicCommand command) : this()
+        public Trigger(Phrase phrase) : this()
         {
-            Phrases = command.GetCommands();
+            AddTriggers(phrase);
         }
 
-        public Trigger(List<BasicCommand> commands) : this()
+        public Trigger(List<Phrase> phrases) : this()
         {
-            foreach(BasicCommand command in commands)
+            foreach(Phrase phrase in phrases)
             {
-                Phrases.AddRange(command.GetCommands());
+                AddTriggers(phrase);
             }
         }
 
@@ -40,12 +41,13 @@ namespace Jones.Domain.Triggers
 
         public void AddTriggers(params string[] triggers)
         {
-            Phrases.AddRange(triggers);
+            Phrases.AddRange(triggers.AllToLower());
         }
 
-        public void AddTriggers(BasicCommand command)
+        public void AddTriggers(Phrase phrase)
         {
-            Phrases.AddRange(command.GetCommands());
+            var phrases = phrase.GeneratePhrases().AllToLower();
+            Phrases.AddRange(phrases);
         }
 
         public bool IsTriggered(string input)

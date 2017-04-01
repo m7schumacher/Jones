@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Domain.Commands
+namespace Jones.Domain.Phrases
 {
-    public abstract class Command
+    public abstract class Phrase
     {
         protected List<string> Phrases { get; set; }
 
-        public Command(params string[] phrases)
+        public Phrase(params string[] phrases)
         {
             Phrases = phrases.ToList();
         }
 
-        public abstract List<string> GetCommands();
+        public abstract List<string> GeneratePhrases();
     }
 }

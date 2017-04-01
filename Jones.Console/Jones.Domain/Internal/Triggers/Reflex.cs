@@ -1,4 +1,4 @@
-﻿using Jones.Domain.Commands;
+﻿using Jones.Domain.Phrases;
 using Swiss.Utilities.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,12 @@ namespace Jones.Domain.Triggers
 
         #region Constructors
 
-        public Reflex(Func<string> method, BasicCommand command) : base(command)
+        public Reflex(Func<string> method, Phrase command) : base(command)
         {
             Method = method;
         }
 
-        public Reflex(Func<string> method, List<BasicCommand> commands) : base(commands)
+        public Reflex(Func<string> method, List<Phrase> commands) : base(commands)
         {
             Method = method;
         }

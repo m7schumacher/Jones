@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Domain.Commands
+namespace Jones.Domain.Phrases
 {
-    public class BasicCommand : Command
+    public class ComplexPhrase : Phrase
     {
         List<string[]> TermSets { get; set; }
         int NumberOfSets { get { return TermSets.Count; } }
 
-        public BasicCommand(params string[] phrases) : base(phrases)
+        public ComplexPhrase(params string[] phrases) : base(phrases)
         {
             TermSets = new List<string[]>();
         }
@@ -45,10 +45,15 @@ namespace Jones.Domain.Commands
             return permutations;
         }
 
-        public override List<string> GetCommands()
+        public override List<string> GeneratePhrases()
         {
             List<string> commands = new List<string>();
             List<string[]> permutations = GeneratePermutations();
+
+            if(permutations.Count == 0)
+            {
+                return Phrases;
+            }
 
             foreach (string phrase in Phrases)
             {

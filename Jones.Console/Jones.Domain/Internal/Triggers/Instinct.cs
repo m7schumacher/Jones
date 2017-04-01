@@ -1,4 +1,4 @@
-﻿using Jones.Domain.Commands;
+﻿using Jones.Domain.Phrases;
 using Swiss;
 using System;
 using System.Collections.Generic;

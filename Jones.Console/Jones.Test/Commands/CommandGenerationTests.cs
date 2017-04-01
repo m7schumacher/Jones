@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Jones.Domain.Commands;
+using Jones.Domain.Phrases;
 using Jones.Domain.Extensions;
 using Jones.Domain;
 using System.Collections.Generic;
@@ -18,10 +18,10 @@ namespace Jones.Test.Commands
                 "weather", "wind", "rain"
             };
 
-            BasicCommand command = CommandGenerator.HowDoing(true, subjects);
-            List<string> phrases = command.GetCommands();
+            SimplePhrase command = PhraseGenerator.HowDoing(false, subjects);
+            List<string> phrases = command.GeneratePhrases();
 
-            int expectedCount = BaseCommands.HowDoing.Length * subjects.Length;
+            int expectedCount = BasePhrases.HowDoing.Length * subjects.Length;
             Assert.AreEqual(expectedCount, phrases.Count);
         }
 

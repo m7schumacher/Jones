@@ -19,11 +19,12 @@ namespace Jones.Home
             int secondsToInitialize = Diagnostics.DoAndTime(() => kernel.Initialize());
 
             Console.WriteLine("Initialize took {0} seconds", secondsToInitialize);
+            Console.WriteLine("\n\nJones is now listening!");
 
-            while(true)
+            while (true)
             {
                 string input = Console.ReadLine();
-                kernel.Process(input);
+                Console.WriteLine(kernel.Process(input));
             }
         }
     }

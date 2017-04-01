@@ -1,4 +1,7 @@
-﻿using Jones.Core;
+﻿using Jones.Cells;
+using Jones.Cells.Weather;
+using Jones.Domain;
+using Swiss;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +13,30 @@ namespace Jones.Core
     public class Kernel
     {
         public static Configuration Configuration { get; set; }
-        public WeatherCore Weather { get; set; }
+        public WeatherCell Weather { get; set; }
+
+        private List<Cell> Cells { get; set; }
+        private List<Command> Commands { get; set; }
 
         public void Initialize(bool dreaming = false)
         {
             Configuration = new Configuration(dreaming);
-            List<Core> blocks = InitializeCores();
+            Cells = InitializeCells();
+
+            Commands = new List<Command>();
+
+            foreach(var core in Cells)
+            {
+                Commands.AddRange(core.GetCommands());
+            }
         }
 
-        private List<Core> InitializeCores()
+        private List<Cell> InitializeCells()
         {
             return this.GetType()
                        .GetProperties()
-                       .Where(prop => prop.PropertyType.BaseType == typeof(Core))
-                       .Select(prop => (Core)Activator.CreateInstance(prop.PropertyType))
+                       .Where(prop => prop.PropertyType.BaseType == typeof(Cell))
+                       .Select(prop => (Cell)Activator.CreateInstance(prop.PropertyType))
                        .ToList();
         }
 
@@ -31,9 +44,10 @@ namespace Jones.Core
         {
             string output = string.Empty;
 
-            //Logic
+            Command match = Commands.First(cmd => cmd.Phrase.EqualsIgnoreCase(input));
+            Cell target = Cells.First(core => core.Name.Equals(match.Target));
 
-            return output;
+            return target.Execute(input);
         }
     }
 }

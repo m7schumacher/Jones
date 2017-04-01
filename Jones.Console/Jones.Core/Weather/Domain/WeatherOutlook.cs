@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Core.Weather.Domain
+namespace Jones.Cells.Weather
 {
     public class WeatherOutlook
     {

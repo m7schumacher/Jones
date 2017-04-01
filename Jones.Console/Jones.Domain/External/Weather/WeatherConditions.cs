@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Jones.Domain.Internal.Tags;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Cells.Weather
+namespace Jones.Domain.External.Weather
 {
-    public class CurrentCondition
+    public class WeatherConditions
     {
+        [Adjectives("cold", "hot")]
         public int ApparentTemperature { get; set; }
         public int CloudCover { get; set; }
         public int DewPoint { get; set; }
@@ -26,9 +28,9 @@ namespace Jones.Cells.Weather
         public int WindBearing { get; set; }
         public int WindSpeed { get; set; }
 
-        public WeatherEnums.Direction WindDirection { get; set; }
-        public WeatherEnums.Direction StormDirection { get; set; }
-        public WeatherEnums.PrecipIntensity Intensity { get; set; }
-        public WeatherEnums.PrecipType Type { get; set; }
+        public Data.Weather.Direction WindDirection { get; set; }
+        public Data.Weather.Direction StormDirection { get; set; }
+        public Data.Weather.PrecipIntensity Intensity { get; set; }
+        public Data.Weather.PrecipType Type { get; set; }
     }
 }

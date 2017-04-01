@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Base", "Jones.Kernel\Jones.Base.csproj", "{2960BB72-DE14-4BCA-8B87-7A6A65DB68D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Core", "Jones.Kernel\Jones.Core.csproj", "{2960BB72-DE14-4BCA-8B87-7A6A65DB68D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Cores", "Jones.Core\Jones.Cores.csproj", "{56D24580-E6DA-4A08-9863-B8EC0D873059}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Cells", "Jones.Core\Jones.Cells.csproj", "{56D24580-E6DA-4A08-9863-B8EC0D873059}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Test", "Jones.Test\Jones.Test.csproj", "{71898CBC-4E23-436D-BCC4-8F6A52CFCE6F}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Home", "Jones.Home\Jones.Home.csproj", "{84006BA2-1B46-4D7D-B5DD-D171BCACA4C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.Utility", "Jones.Utility\Jones.Utility.csproj", "{69C321A8-A82B-425E-A9C0-5C2F37A041B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jones.API", "Jones.API\Jones.API.csproj", "{DC6AC615-BED0-4BD4-A3A2-0465376F4818}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{69C321A8-A82B-425E-A9C0-5C2F37A041B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69C321A8-A82B-425E-A9C0-5C2F37A041B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69C321A8-A82B-425E-A9C0-5C2F37A041B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6AC615-BED0-4BD4-A3A2-0465376F4818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6AC615-BED0-4BD4-A3A2-0465376F4818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6AC615-BED0-4BD4-A3A2-0465376F4818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6AC615-BED0-4BD4-A3A2-0465376F4818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
