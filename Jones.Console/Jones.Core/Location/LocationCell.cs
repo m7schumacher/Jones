@@ -30,6 +30,7 @@ namespace Jones.Cells.Location
         public LocationCell() : base("Location")
         {
             API = new LocationAPI();
+            Enabled = false;
         }
 
         protected override void Initialize()

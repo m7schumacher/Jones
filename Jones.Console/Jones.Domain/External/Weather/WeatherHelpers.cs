@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.Cells.Weather
+namespace Jones.Domain.External.Weather
 {
     public class WeatherEnums
     {

@@ -51,11 +51,6 @@
     <Compile Include="Organelles\Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sports\Baseball\BaseballCell.cs" />
-    <Compile Include="Weather\Domain\CurrentCondition.cs" />
-    <Compile Include="Weather\Domain\DailyForecast.cs" />
-    <Compile Include="Weather\Domain\WeatherHelpers.cs" />
-    <Compile Include="Weather\Domain\WeatherOutlook.cs" />
-    <Compile Include="Weather\Domain\WeatherShells.cs" />
     <Compile Include="Weather\WeatherCell.cs" />
     <Compile Include="Weather\WeatherGate.cs" />
     <Compile Include="Weather\WeatherMonitor.cs" />

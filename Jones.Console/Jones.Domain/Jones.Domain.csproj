@@ -56,6 +56,7 @@
     <Compile Include="External\Sports\MLB\Pitcher.cs" />
     <Compile Include="External\Sports\Player.cs" />
     <Compile Include="External\Sports\Team.cs" />
+    <Compile Include="External\Weather\WeatherHelpers.cs" />
     <Compile Include="Internal\API\BaseAPI.cs" />
     <Compile Include="Internal\Commands\Command.cs" />
     <Compile Include="Internal\Commands\KnownCommand.cs" />
