@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API.cs" />
     <Compile Include="Geo\LocationAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sports\MLB\BaseballAPI.cs" />
     <Compile Include="Weather\WeatherAPI.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +54,7 @@
       <Name>Jones.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

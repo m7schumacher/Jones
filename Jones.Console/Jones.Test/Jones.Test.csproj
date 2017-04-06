@@ -55,6 +55,7 @@
     <Compile Include="Cells\Weather\WeatherTest.cs" />
     <Compile Include="Commands\CommandGenerationTests.cs" />
     <Compile Include="Internal\EntityTests.cs" />
+    <Compile Include="Internal\CommandTests.cs" />
     <Compile Include="KernelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.API
+namespace Jones.Domain.Internal.API
 {
-    public class API
+    public abstract class BaseAPI
     {
         protected string Key { get; set; }
         protected string BaseURL { get; set; }
 
-        public API(string key = "")
+        public BaseAPI(string key = "")
         {
             Key = key;
         }
@@ -22,15 +22,15 @@ namespace Jones.API
             return string.Format(BaseURL, args);
         }
 
-        protected T Deserialize<T>(string url)
+        protected K Deserialize<K>(string url)
         {
             try
             {
-                return InternetUtility.DeserializeResponse<T>(url);
+                return InternetUtility.DeserializeResponse<K>(url);
             }
             catch (Exception e)
             {
-                return default(T);
+                return default(K);
             }
         }
 

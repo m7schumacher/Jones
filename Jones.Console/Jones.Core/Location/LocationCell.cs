@@ -42,18 +42,18 @@ namespace Jones.Cells.Location
             };
         }
 
-        protected override void Update()
-        {
-            var location = API.GetLocation(Data.Geo.FARGO_ZIPCODE);
+        //protected override void Update()
+        //{
+        //    var location = API.GetLocation(Data.Geo.FARGO_ZIPCODE);
 
-            Longitude = location.LatAndLong != null ? location.LatAndLong.Long.ToDouble() : Data.Geo.FARGO_LONGITUDE;
-            Latitude = location.LatAndLong != null ? location.LatAndLong.Lat.ToDouble() : Data.Geo.FARGO_LATITUDE;
+        //    Longitude = location.LatAndLong != null ? location.LatAndLong.Long.ToDouble() : Data.Geo.FARGO_LONGITUDE;
+        //    Latitude = location.LatAndLong != null ? location.LatAndLong.Lat.ToDouble() : Data.Geo.FARGO_LATITUDE;
 
-            City = location.City;
-            State = location.State;
-            ZipCode = location.ZipCode;
-            Address = Data.Geo.CURRENT_ADDRESS;
-            LocalTime = location.LocalTime;
-        }
+        //    City = location.City;
+        //    State = location.State;
+        //    ZipCode = location.ZipCode;
+        //    Address = Data.Geo.CURRENT_ADDRESS;
+        //    LocalTime = location.LocalTime;
+        //}
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Jones.Domain.External.Geographical;
+using Jones.Domain.Internal.API;
 using Swiss.Utilities.Web;
 using System;
 using System.Collections.Generic;
@@ -92,7 +93,7 @@ namespace Jones.API.Geography
 
     #endregion
 
-    public class LocationAPI : API
+    public class LocationAPI : BaseAPI
     {
         private string CityStateURL = "http://ziptasticapi.com/{0}";
         private string LatLongURL = "http://maps.googleapis.com/maps/api/geocode/json?address={0}";

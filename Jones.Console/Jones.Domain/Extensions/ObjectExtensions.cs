@@ -11,15 +11,17 @@ namespace Jones.Domain.Extensions
 {
     public static class ObjectExtensions
     {
-        public static Dictionary<string, string[]> GetTags(this object obj, string prefix = "")
+        public static TagCollection GetTags(this object obj, string prefix = "")
         {
             return obj.GetType().GetTags(prefix);
         }
 
-        public static Dictionary<string, string[]> GetTags(this Type type, string prefix = "")
+        public static TagCollection GetTags(this Type type, string prefix = "")
         {
-            Dictionary<string, string[]> result = new Dictionary<string, string[]>();
-            string propName;
+            TagCollection result = new TagCollection(type.Name);
+
+            string propPath;
+            string[] adjs;
 
             if(prefix.Length > 0)
             {
@@ -28,15 +30,20 @@ namespace Jones.Domain.Extensions
 
             foreach(PropertyInfo prop in type.GetProperties())
             {
-                propName = prefix + prop.Name;
+                propPath = prefix + prop.Name;
 
                 if(prop.PropertyType.Namespace.Equals("System"))
                 {
-                    result.Add(propName, prop.GetAdjectives());
+                    adjs = prop.GetAdjectives();
+
+                    if(adjs.Length > 0)
+                    {
+                        result.Tags.Add(new Tag(propPath) { Adjectives = adjs });
+                    }
                 }
                 else
                 {
-                    result.AddRange(prop.PropertyType.GetTags(propName));
+                    result.Combine(prop.PropertyType.GetTags(propPath));
                 }
             }
 

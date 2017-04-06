@@ -3,6 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Jones.Domain.Internal.Tags;
 using Jones.Domain.Extensions;
 using System.Collections.Generic;
+using Jones.Domain;
+using Jones.Cells.Weather;
+using Jones.Domain.External.Weather;
 
 namespace Jones.Test.Internal
 {
@@ -38,48 +41,53 @@ namespace Jones.Test.Internal
         public void TestSimpleEntity()
         {
             SimpleBlock block = new SimpleBlock();
-            Dictionary<string, string[]> result = block.GetTags();
+            TagCollection result = block.GetTags();
 
-            Assert.AreEqual(2, result.Count);
-            Assert.IsTrue(result.ContainsKey("Height"));
-            Assert.IsTrue(result.ContainsKey("Width"));
-            Assert.AreEqual(2, result["Height"].Length);
-            Assert.AreEqual(2, result["Width"].Length);
+            Assert.AreEqual(2, result.Tags.Count);
+            Assert.IsTrue(result.ContainsPath("Height"));
+            Assert.IsTrue(result.ContainsPath("Width"));
+            Assert.AreEqual(2, result["Height"].Adjectives.Length);
+            Assert.AreEqual(2, result["Width"].Adjectives.Length);
         }
 
         [TestMethod]
         public void TestComplexEntity()
         {
             ComplexBlock block = new ComplexBlock();
-            Dictionary<string, string[]> result = block.GetTags();
+            TagCollection result = block.GetTags();
 
-            Assert.AreEqual(3, result.Count);
-            Assert.IsTrue(result.ContainsKey("Depth"));
-            Assert.AreEqual(1, result["Depth"].Length);
-            Assert.IsTrue(result.ContainsKey("Block.Height"));
-            Assert.IsTrue(result.ContainsKey("Block.Width"));
-            Assert.AreEqual(2, result["Block.Height"].Length);
-            Assert.AreEqual(2, result["Block.Width"].Length);
+            Assert.AreEqual(3, result.Tags.Count);
+            Assert.IsTrue(result.ContainsPath("Depth"));
+            Assert.AreEqual(1, result["Depth"].Adjectives.Length);
+            Assert.IsTrue(result.ContainsPath("Block" + Constants.Delimeter + "Height"));
+            Assert.IsTrue(result.ContainsPath("Block" + Constants.Delimeter + "Width"));
+            Assert.AreEqual(2, result["Block" + Constants.Delimeter + "Height"].Adjectives.Length);
+            Assert.AreEqual(2, result["Block" + Constants.Delimeter + "Width"].Adjectives.Length);
         }
 
         [TestMethod]
         public void TestDeepEntity()
         {
+            WeatherCell cell = new WeatherCell();
+            CurrentWeather weather = (CurrentWeather)cell.Pool.Entities[0];
+
+            TagCollection coll = weather.GetTags();
+
             DeepBlock block = new DeepBlock();
-            Dictionary<string, string[]> result = block.GetTags();
+            TagCollection result = block.GetTags();
 
-            Assert.AreEqual(4, result.Count);
+            Assert.AreEqual(4, result.Tags.Count);
 
-            Assert.IsTrue(result.ContainsKey("Color"));
-            Assert.AreEqual(2, result["Color"].Length);
+            Assert.IsTrue(result.ContainsPath("Color"));
+            Assert.AreEqual(2, result["Color"].Adjectives.Length);
 
-            Assert.IsTrue(result.ContainsKey("Block.Depth"));
-            Assert.AreEqual(1, result["Block.Depth"].Length);
+            Assert.IsTrue(result.ContainsPath("Block" + Constants.Delimeter + "Depth"));
+            Assert.AreEqual(1, result["Block" + Constants.Delimeter + "Depth"].Adjectives.Length);
 
-            Assert.IsTrue(result.ContainsKey("Block.Block.Height"));
-            Assert.IsTrue(result.ContainsKey("Block.Block.Width"));
-            Assert.AreEqual(2, result["Block.Block.Height"].Length);
-            Assert.AreEqual(2, result["Block.Block.Width"].Length);
+            Assert.IsTrue(result.ContainsPath("Block" + Constants.Delimeter + "Block" + Constants.Delimeter + "Height"));
+            Assert.IsTrue(result.ContainsPath("Block" + Constants.Delimeter + "Block" + Constants.Delimeter + "Width"));
+            Assert.AreEqual(2, result["Block" + Constants.Delimeter + "Block" + Constants.Delimeter + "Height"].Adjectives.Length);
+            Assert.AreEqual(2, result["Block" + Constants.Delimeter + "Block" + Constants.Delimeter + "Width"].Adjectives.Length);
         }
     }
 }

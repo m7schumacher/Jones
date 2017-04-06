@@ -7,8 +7,8 @@
     <ProjectGuid>{56D24580-E6DA-4A08-9863-B8EC0D873059}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jones.Core</RootNamespace>
-    <AssemblyName>Jones.Core</AssemblyName>
+    <RootNamespace>Jones.Cells</RootNamespace>
+    <AssemblyName>Jones.Cells</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,14 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cell.cs" />
+    <Compile Include="Organelles\Gate.cs" />
     <Compile Include="Location\LocationCell.cs" />
+    <Compile Include="Organelles\Monitor.cs" />
+    <Compile Include="Organelles\Organelle.cs" />
+    <Compile Include="Organelles\Pool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sports\Baseball\BaseballCell.cs" />
     <Compile Include="Weather\Domain\CurrentCondition.cs" />
     <Compile Include="Weather\Domain\DailyForecast.cs" />
     <Compile Include="Weather\Domain\WeatherHelpers.cs" />
     <Compile Include="Weather\Domain\WeatherOutlook.cs" />
     <Compile Include="Weather\Domain\WeatherShells.cs" />
     <Compile Include="Weather\WeatherCell.cs" />
+    <Compile Include="Weather\WeatherGate.cs" />
+    <Compile Include="Weather\WeatherMonitor.cs" />
+    <Compile Include="Weather\WeatherPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utilities\" />

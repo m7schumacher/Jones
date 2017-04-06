@@ -46,4 +46,10 @@ namespace Jones.Data
             None
         }
     }
+
+    public class Language
+    {
+        public static string Questioners = "^who|^is|^what|^when|^where|^why|^how|[?]";
+        public static string[] AdjectiveTargets = new string[] { "how" }; 
+    }
 }

@@ -1,4 +1,6 @@
 ﻿using Jones.Domain.External.Weather;
+using Jones.Domain.Internal;
+using Jones.Domain.Internal.API;
 using Swiss;
 using Swiss.Utilities.Web;
 using System;
@@ -7,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jones.API
+namespace Jones.API.Weather
 {
     #region Shell Classes
 
@@ -201,7 +203,7 @@ namespace Jones.API
 
     #endregion
 
-    public class WeatherAPI : API
+    public class WeatherAPI : BaseAPI
     {
         public WeatherAPI()
         {
@@ -245,9 +247,9 @@ namespace Jones.API
             return message;
         }
 
-        public CurrentWeather GetCurrentWeather(double lat, double lon)
+        public CurrentWeather GetCurrentWeather(double latitude, double longitude)
         {
-            string FullURL = FormatBaseURL(Key, lat, lon);
+            string FullURL = FormatBaseURL(Key, latitude, longitude);
 
             try
             {
