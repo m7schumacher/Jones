@@ -10,8 +10,9 @@ namespace Jones.Cells.Organelles
 {
     public abstract class Gate : Organelle
     {
+        public ReflexPool Reflexes { get; set; }
+
         public List<Instinct> Instincts { get; set; }
-        public List<Reflex> Reflexes { get; set; }
         public List<Response> Responses { get; set; }
 
         protected List<string> Prefixes { get; set; }
@@ -24,13 +25,13 @@ namespace Jones.Cells.Organelles
         protected override void Initialize()
         {
             Instincts = GenerateInstincts();
-            Reflexes = GenerateReflexes();
             Responses = GenerateResponses();
+            Reflexes = GenerateReflexes();
             Prefixes = GenerateCustomPrefixes();
         }
 
         protected abstract List<Instinct> GenerateInstincts();
-        protected abstract List<Reflex> GenerateReflexes();
+        protected abstract ReflexPool GenerateReflexes();
         protected abstract List<Response> GenerateResponses();
         protected abstract List<string> GenerateCustomPrefixes();
 
@@ -43,21 +44,14 @@ namespace Jones.Cells.Organelles
                 return matchingInstinct.GetResult();
             }
 
-            Reflex matchingReflex = Reflexes.FirstOrDefault(reflex => reflex.IsTriggered(input.Phrase));
-
-            if (matchingReflex != null)
-            {
-                return matchingReflex.GetResult();
-            }
-
-            return string.Empty;
+            return Reflexes.Execute(input.Phrase);
         }
 
         public List<KnownCommand> GetCommands()
         {
             List<string> phrases = new List<string>();
             phrases.AddRange(Instincts.SelectMany(inst => inst.Phrases));
-            phrases.AddRange(Reflexes.SelectMany(refl => refl.Phrases));
+            phrases.AddRange(Reflexes.GetPhrases());
             phrases.AddRange(Pool.GatherEntityPhrases());
 
             return phrases.Select(phrase => new KnownCommand(phrase, Name)).ToList();

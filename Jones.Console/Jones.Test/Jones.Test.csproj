@@ -56,6 +56,7 @@
     <Compile Include="Commands\CommandGenerationTests.cs" />
     <Compile Include="Internal\EntityTests.cs" />
     <Compile Include="Internal\CommandTests.cs" />
+    <Compile Include="Internal\ReflexTests.cs" />
     <Compile Include="KernelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\Jones.Domain\Jones.Domain.csproj">
       <Project>{27537830-2f4b-4139-9933-db351fbe9754}</Project>
       <Name>Jones.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jones.Home\Jones.Home.csproj">
+      <Project>{84006ba2-1b46-4d7d-b5dd-d171bcaca4c7}</Project>
+      <Name>Jones.Home</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

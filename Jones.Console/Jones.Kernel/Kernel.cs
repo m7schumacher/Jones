@@ -1,4 +1,5 @@
 ﻿using Jones.Cells;
+using Jones.Cells.Organelles;
 using Jones.Cells.Weather;
 using Jones.Domain;
 using Jones.Domain.Internal.Notifications;
@@ -15,20 +16,20 @@ namespace Jones.Core
 {
     public class Kernel
     {
-        public static Configuration Configuration { get; set; }
         public static List<Notice> Notifications { get; set; }
+        public List<KnownCommand> Commands { get; set; }
 
         private List<Cell> Cells { get; set; }
-        private List<KnownCommand> Commands { get; set; }
 
-        private Timer FastEngine { get; set; }
-        private Timer RegularEngine { get; set; }
+        private Timer Engine { get; set; }
 
         #region Initialization
 
         public void Initialize(bool dreaming = false)
         {
-            Configuration = new Configuration(dreaming);
+            Configuration.InitializeDefaultConfiguration(dreaming);
+            Senses.AnalyzeEnvironment();
+
             Cells = InitializeCells();
 
             Commands = new List<KnownCommand>();
@@ -37,13 +38,16 @@ namespace Jones.Core
             {
                 Commands.AddRange(cell.GatherCommands());
             }
+
+            Console.WriteLine("{0} commands gathered", Commands.Count);
         }
 
         private List<Cell> InitializeCells()
         {
             AssemblyName cellAssembly = Assembly.GetExecutingAssembly()
                                                 .GetReferencedAssemblies()
-                                                .First(assem => assem.Name.Equals("Jones.Cells"));
+                                                .First(assem => assem.Name.Equals(Constants.CellsAssembly));
+
             return Assembly.Load(cellAssembly)
                            .GetTypes()
                            .Where(type => type.BaseType == typeof(Cell))
@@ -58,16 +62,12 @@ namespace Jones.Core
 
         private void BeginMonitoring()
         {
-            List<Cell> fastCells = Cells.Where(cl => cl.Monitor.IsFast).ToList();
-            List<Cell> slowCells = Cells.Where(cl => !cl.Monitor.IsFast).ToList();
-
-            RegularEngine = new Timer(e => { CycleCells(slowCells); }, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
-            FastEngine = new Timer(e => { CycleCells(fastCells); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(20));
+            Engine = new Timer(e => { CycleCells(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(Constants.SecondsPerCycle));
         }
 
-        private void CycleCells(List<Cell> cells)
+        private void CycleCells()
         {
-            foreach (var cell in cells)
+            foreach (var cell in Cells)
             {
                 Notifications.AddRange(cell.GatherNotifications());
             }

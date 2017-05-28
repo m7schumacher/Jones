@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Jones.Domain;
 using Jones.Cells.Weather;
 using Jones.Domain.External.Weather;
+using Jones.Home;
 
 namespace Jones.Test.Internal
 {

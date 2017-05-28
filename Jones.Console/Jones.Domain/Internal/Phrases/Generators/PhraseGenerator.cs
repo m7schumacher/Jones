@@ -10,25 +10,48 @@ namespace Jones.Domain.Phrases
 {
     public class PhraseGenerator
     {
-        public static SimplePhrase HowDoing(string subject, bool plural = false)
+        private static string[] Functions { get; set; }
+
+        public static string[] Methods()
         {
-            string[] commands = plural ? BasePhrases.HowDoing.TakeAllRight()
-                                       : BasePhrases.HowDoing.TakeAllLeft();
-
-            commands = commands.Select(str => string.Format(str, subject)).ToArray();
-
-            return new SimplePhrase(commands);
+            return Functions ?? typeof(PhraseGenerator).GetMethods()
+                                          .Where(mth => mth.IsPublic && mth.IsStatic)
+                                          .Select(mth => mth.Name)
+                                          .ToArray();
         }
 
-        public static SimplePhrase HowDoing(bool plural = false, params string[] subjects)
-        {
-            string[] commands = plural ? BasePhrases.HowDoing.TakeAllRight()
-                                       : BasePhrases.HowDoing.TakeAllLeft();
+        #region How Doing
 
-            SimplePhrase command = new SimplePhrase(commands);
+        private static SimplePhrase HowDoing(string[] phrases, string[] subjects)
+        {
+            SimplePhrase command = new SimplePhrase(phrases);
             command.AddTerms(subjects);
 
             return command;
         }
+
+        public static SimplePhrase HowDoingPlural(params string[] subjects)
+        {
+            string[] commands = BasePhrases.HowDoing.TakeAllRight();
+            return HowDoing(commands, subjects);
+        }
+
+        public static SimplePhrase HowDoingSingle(params string[] subjects)
+        {
+            string[] commands = BasePhrases.HowDoing.TakeAllLeft();
+            return HowDoing(commands, subjects);
+        }
+
+        public static SimplePhrase HowDoing(string subject, bool plural = false)
+        {
+            return plural ? HowDoingPlural(subject) : HowDoingSingle(subject);
+        }
+
+        public static SimplePhrase HowDoing(bool plural = false, params string[] subjects)
+        {
+            return plural ? HowDoingPlural(subjects) : HowDoingSingle(subjects);
+        }
+
+        #endregion
     }
 }

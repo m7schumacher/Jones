@@ -15,7 +15,12 @@ namespace Jones.Cells.Weather
 
         public CurrentWeather Weather { get; private set; }
 
-        public WeatherPool()
+        public WeatherPool() : base()
+        {
+            
+        }
+
+        protected override void Initialize()
         {
             API = new WeatherAPI();
         }

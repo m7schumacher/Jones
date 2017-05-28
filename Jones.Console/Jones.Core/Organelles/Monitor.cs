@@ -1,4 +1,5 @@
-﻿using Jones.Domain.Internal;
+﻿using Jones.Domain;
+using Jones.Domain.Internal;
 using Jones.Domain.Internal.Notifications;
 using System;
 using System.Collections.Generic;
@@ -14,26 +15,29 @@ namespace Jones.Cells.Organelles
         private bool SendingNotifications { get; set; }
         private int ConsecutiveFailures { get; set; }
 
-        public int MinutesToUpdate { get; set; }
-        public int MinutesSinceLastUpdate { get; set; }
+        protected int CyclesPerUpdate { get; set; }
+        private int CyclesSinceLastUpdate { get; set; }
 
-        public int FailuresBeforeQuit { get; set; }
+        protected int FailuresBeforeQuit { get; set; }
 
-        public int RefreshHour { get; set; }
-        public int RefreshMinute { get; set; }
-
-        public bool IsFast { get; set; }
+        protected int RefreshHour { get; set; }
+        protected int RefreshMinute { get; set; }
 
         public Monitor(string name, Pool pool) : base(name, pool)
         {
             SetRefresh(3, 0);
-            IsFast = false;
+            SetMinutesToUpdate(1);
         }
 
         protected void SetRefresh(int hour, int minute)
         {
             RefreshHour = hour;
             RefreshMinute = minute;
+        }
+
+        protected void SetMinutesToUpdate(int minutes)
+        {
+            CyclesPerUpdate = minutes * (60 / Constants.SecondsPerCycle);
         }
 
         protected abstract List<Notice> GatherNotifications();
@@ -54,14 +58,14 @@ namespace Jones.Cells.Organelles
 
         public List<Notice> Update()
         {
-            MinutesSinceLastUpdate++;
+            CyclesSinceLastUpdate++;
             List<Notice> notifications = new List<Notice>();
 
-            if (MinutesToUpdate == MinutesSinceLastUpdate)
+            if (CyclesPerUpdate == CyclesSinceLastUpdate)
             {
                 try
                 {
-                    MinutesSinceLastUpdate = 0;
+                    CyclesSinceLastUpdate = 0;
                     Pool.Update();
 
                     ConsecutiveFailures = 0;

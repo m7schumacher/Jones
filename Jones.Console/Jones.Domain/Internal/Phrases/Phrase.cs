@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swiss;
 
 namespace Jones.Domain.Phrases
 {
@@ -16,5 +17,10 @@ namespace Jones.Domain.Phrases
         }
 
         public abstract List<string> GeneratePhrases();
+
+        public string ToReflex()
+        {
+            return GeneratePhrases().JoinOnDelimeter(Constants.PhraseIdentifier);
+        }
     }
 }

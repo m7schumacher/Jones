@@ -9,23 +9,31 @@ using Jones.Core;
 
 namespace Jones.Home
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            Console.Write("Initializing Kernel...");
+        private static Kernel kernel;
 
-            Kernel kernel = new Kernel();
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Initializing Kernel...\n");
+
+            kernel = new Kernel();
             int secondsToInitialize = Diagnostics.DoAndTime(() => kernel.Initialize());
 
-            Console.WriteLine("Initialize took {0} seconds", secondsToInitialize);
+            Console.WriteLine("\nInitialize took {0} milliseconds", secondsToInitialize);
             Console.WriteLine("\n\nJones is now listening!");
 
             while (true)
             {
                 string input = Console.ReadLine();
-                Console.WriteLine(kernel.Process(input));
+                string output = Process(input);
+                Console.WriteLine(output);
             }
+        }
+
+        public static string Process(string input)
+        {
+            return kernel.Process(input);
         }
     }
 }

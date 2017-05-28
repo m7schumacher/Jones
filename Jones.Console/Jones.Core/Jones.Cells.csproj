@@ -49,12 +49,14 @@
     <Compile Include="Organelles\Monitor.cs" />
     <Compile Include="Organelles\Organelle.cs" />
     <Compile Include="Organelles\Pool.cs" />
+    <Compile Include="Organelles\ReflexPool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sports\Baseball\BaseballCell.cs" />
     <Compile Include="Weather\WeatherCell.cs" />
-    <Compile Include="Weather\WeatherGate.cs" />
-    <Compile Include="Weather\WeatherMonitor.cs" />
-    <Compile Include="Weather\WeatherPool.cs" />
+    <Compile Include="Weather\Organelles\WeatherGate.cs" />
+    <Compile Include="Weather\Organelles\WeatherMonitor.cs" />
+    <Compile Include="Weather\Organelles\WeatherPool.cs" />
+    <Compile Include="Weather\Organelles\WeatherReflexPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utilities\" />

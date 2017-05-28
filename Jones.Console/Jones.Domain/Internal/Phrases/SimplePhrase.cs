@@ -24,12 +24,19 @@ namespace Jones.Domain.Phrases
         {
             List<string> phrs = new List<string>();
 
-            foreach(var phrase in Phrases)
+            if (Terms.Count > 0)
             {
-                foreach(var term in Terms)
+                foreach (var phrase in Phrases)
                 {
-                    phrs.Add(string.Format(phrase, term));
+                    foreach (var term in Terms)
+                    {
+                        phrs.Add(string.Format(phrase, term));
+                    }
                 }
+            }
+            else
+            {
+                phrs = Phrases;
             }
 
             return phrs;

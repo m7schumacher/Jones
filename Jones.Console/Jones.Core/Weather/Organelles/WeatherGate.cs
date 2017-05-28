@@ -30,13 +30,9 @@ namespace Jones.Cells.Weather
             return new List<Instinct>();
         }
 
-        protected override List<Reflex> GenerateReflexes()
+        protected override ReflexPool GenerateReflexes()
         {
-            return new List<Reflex>()
-            {
-                new Reflex(() => GiveCurrentSummary(), "weather"),
-                new Reflex(() => GiveCurrentSummary(), PhraseGenerator.HowDoing("weather"))
-            };
+            return new WeatherReflexPool();
         }
 
         protected override List<Response> GenerateResponses()
@@ -46,12 +42,7 @@ namespace Jones.Cells.Weather
 
         #region Reflex Methods
 
-        public string GiveCurrentSummary()
-        {
-            return "Test Summary";
-            //Dictionary<string, object> values = GatherValues();
-            //return GenerateOutput(Name, "overview", values);
-        }
+        
 
         #endregion
     }

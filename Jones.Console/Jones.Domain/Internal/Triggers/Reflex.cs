@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,11 @@ namespace Jones.Domain.Triggers
         public Reflex(Func<string> method, params string[] phrases) : base(phrases)
         {
             Method = method;
+        }
+
+        public Reflex(MethodInfo method, params string[] phrases) : base(phrases)
+        {
+            Method = () => method.Invoke(null, null).ToString();
         }
 
         #endregion

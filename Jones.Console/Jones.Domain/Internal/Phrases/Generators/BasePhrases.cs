@@ -14,7 +14,9 @@ namespace Jones.Domain.Phrases
             "How is:are the {0} doing",
             "Update on the {0}",
             "How does:do the {0} look",
-            "How is:are the {0} looking"
+            "How is:are the {0} looking",
+            "Tell me about the {0}",
+            "Give me an update on the {0}"
         };
 
         #region Responses

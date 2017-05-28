@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="External\Sports\Game.cs" />
     <Compile Include="External\Sports\MLB\Base\BaseballGame.cs" />
     <Compile Include="External\Sports\MLB\Base\BaseballPlayer.cs" />
@@ -60,12 +62,15 @@
     <Compile Include="Internal\API\BaseAPI.cs" />
     <Compile Include="Internal\Commands\Command.cs" />
     <Compile Include="Internal\Commands\KnownCommand.cs" />
+    <Compile Include="Internal\Tags\Reflex.cs" />
+    <Compile Include="Kernel\Configuration.cs" />
     <Compile Include="Internal\Data.cs" />
     <Compile Include="External\Geographical\LatAndLong.cs" />
     <Compile Include="External\Geographical\Location.cs" />
     <Compile Include="External\Weather\CurrentWeather.cs" />
     <Compile Include="External\Weather\Forecast.cs" />
     <Compile Include="External\Weather\WeatherConditions.cs" />
+    <Compile Include="Kernel\Environment.cs" />
     <Compile Include="Internal\Notifications\Notice.cs" />
     <Compile Include="Internal\Notifications\Notification.cs" />
     <Compile Include="Internal\Phrases\ComplexPhrase.cs" />
@@ -74,8 +79,6 @@
     <Compile Include="Internal\Phrases\Generators\BasePhrases.cs" />
     <Compile Include="Internal\Phrases\Generators\PhraseGenerator.cs" />
     <Compile Include="Internal\Constants.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Internal\Phrases\SimplePhrase.cs" />
     <Compile Include="Internal\Tags\Adjectives.cs" />
     <Compile Include="Internal\Tags\Tag.cs" />
@@ -83,7 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\Triggers\Instinct.cs" />
     <Compile Include="Internal\Triggers\Reflex.cs" />
-    <Compile Include="Internal\Response.cs" />
+    <Compile Include="Internal\Phrases\Response.cs" />
     <Compile Include="Internal\Triggers\Trigger.cs" />
   </ItemGroup>
   <ItemGroup>

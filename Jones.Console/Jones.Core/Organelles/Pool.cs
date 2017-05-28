@@ -12,14 +12,19 @@ namespace Jones.Cells.Organelles
         public object[] Entities { get; set; }
         protected Dictionary<string, string> Values { get; set; }
 
-        protected void Initialize()
+        protected Pool()
         {
-            Entities = SetEntities();
             Values = new Dictionary<string, string>();
+
+            Initialize();
+            Update();
+
+            Entities = SetEntities();
         }
 
         public abstract void Update();
         protected abstract object[] SetEntities();
+        protected abstract void Initialize();
 
         public List<string> GatherEntityPhrases()
         {

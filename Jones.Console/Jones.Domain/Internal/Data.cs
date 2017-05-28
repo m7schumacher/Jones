@@ -52,4 +52,31 @@ namespace Jones.Data
         public static string Questioners = "^who|^is|^what|^when|^where|^why|^how|[?]";
         public static string[] AdjectiveTargets = new string[] { "how" }; 
     }
+
+    public class State
+    {
+        public enum Temperature
+        {
+            VeryCold,
+            Cold,
+            Chilly,
+            Cool,
+            Moderate,
+            Warm,
+            Balmy,
+            Hot,
+            VeryHot
+        }
+
+        public enum TimeOfDay
+        {
+            EarlyMorning,
+            Morning,
+            Noon,
+            Afternoon,
+            Evening,
+            Night,
+            LateNight
+        }
+    }
 }
